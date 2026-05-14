@@ -1,43 +1,82 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp">
 
-    <Button
-        android:id="@+id/testButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Test Connection" />
 
-    <Spinner
-        android:id="@+id/gameFileSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/addGameButton"
+        android:id="@+id/listGamesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Add Test Game" />
+        android:text="List Games" />
 
+
+    <EditText
+        android:id="@+id/playerIdInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player ID" />
+
+    <EditText
+        android:id="@+id/providerInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Provider filter" />
+
+    <EditText
+        android:id="@+id/riskInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Risk filter (low/medium/high)" />
+
+    <EditText
+        android:id="@+id/categoryInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bet category ($ / $$ / $$$)" />
+
+    <EditText
+        android:id="@+id/minStarsInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Minimum stars"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/searchGamesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Search Games" />
+
+    <EditText
+        android:id="@+id/balanceInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount to add"
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/addBalanceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Add Balance" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Play" />
+
+    <Button
+        android:id="@+id/playerStatsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player Stats" />
 
     <TextView
         android:id="@+id/resultText"
@@ -46,4 +85,6 @@
         android:paddingTop="20dp"
         android:text="Result" />
 
+
 </LinearLayout>
+</ScrollView>
