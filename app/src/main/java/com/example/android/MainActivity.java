@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText riskInput;
     private EditText categoryInput;
     private EditText minStarsInput;
+    private EditText gameNameInput;
+    private EditText betAmountInput;
 
 
 
@@ -80,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
         addBalanceButton = findViewById(R.id.addBalanceButton);
         addBalanceButton.setOnClickListener(v -> addBalance());
+        gameNameInput = findViewById(R.id.gameNameInput);
+        betAmountInput = findViewById(R.id.betAmountInput);
+
+        playButton = findViewById(R.id.playButton);
+        playButton.setOnClickListener(v -> play());
 
 
     }
@@ -241,7 +248,51 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
     private void play() {
-        resultText.setText("Play not implemented yet");
+        String playerId = playerIdInput.getText().toString().trim();
+        String gameName = gameNameInput.getText().toString().trim();
+        String amountText = betAmountInput.getText().toString().trim();
+
+        if (playerId.isEmpty()) {
+            resultText.setText("Please enter Player ID");
+            return;
+        }
+
+        if (gameName.isEmpty()) {
+            resultText.setText("Please enter Game name");
+            return;
+        }
+
+        if (amountText.isEmpty()) {
+            resultText.setText("Please enter Bet amount");
+            return;
+        }
+
+        double amount;
+
+        try {
+            amount = Double.parseDouble(amountText);
+        } catch (NumberFormatException e) {
+            resultText.setText("Invalid bet amount");
+            return;
+        }
+
+        resultText.setText("Playing...");
+
+        new Thread(() -> {
+            TcpClient client = new TcpClient("10.0.2.2", 5001);
+
+            Request req = Request.placeBet(playerId, gameName, amount);
+            Response res = client.sendRequest(req);
+
+            runOnUiThread(() -> {
+                if (res == null) {
+                    resultText.setText("No response");
+                } else {
+                    resultText.setText(res.getMessage());
+                }
+            });
+
+        }).start();
     }
 
     private void playerStats() {

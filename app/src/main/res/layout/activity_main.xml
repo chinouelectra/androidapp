@@ -85,6 +85,19 @@
         android:paddingTop="20dp"
         android:text="Result" />
 
+    <EditText
+        android:id="@+id/gameNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Game name" />
+
+    <EditText
+        android:id="@+id/betAmountInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bet amount"
+        android:inputType="numberDecimal" />
+
 
 </LinearLayout>
 </ScrollView>
